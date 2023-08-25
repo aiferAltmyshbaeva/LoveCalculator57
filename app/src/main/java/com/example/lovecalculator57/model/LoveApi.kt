@@ -1,4 +1,4 @@
-package com.example.lovecalculator57
+package com.example.lovecalculator57.model
 
 import retrofit2.Call
 import retrofit2.http.GET
