@@ -3,7 +3,7 @@ package com.example.lovecalculator57
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lovecalculator57.databinding.ActivityMainBinding
-
+import com.example.lovecalculator57.ui.StartFragment
 
 class MainActivity : AppCompatActivity() {
 
