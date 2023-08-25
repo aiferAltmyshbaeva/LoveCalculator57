@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.lovecalculator57.R
+import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator57.ResultPresenter
 import com.example.lovecalculator57.databinding.FragmentResultBinding
 import com.example.lovecalculator57.model.LoveModel
+import com.example.lovecalculator57.utils.BundleKeys.KEY_FOR_LOVE
 import com.example.lovecalculator57.view.ResultView
 
 class ResultFragment : Fragment(), ResultView {
@@ -26,18 +27,11 @@ class ResultFragment : Fragment(), ResultView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val args = arguments
-        if (args != null && args.containsKey("response")) {
-            val response = args.getSerializable("response", LoveModel::class.java)
-            if (response != null) {
-                presenter.getData(response)
-            }
-        }
+        val response = arguments?.getSerializable(KEY_FOR_LOVE) as LoveModel
+        presenter.getData(response)
 
         binding.tryAgainBtn.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, StartFragment()).addToBackStack(null).commit()
+            findNavController().popBackStack()
         }
     }
 

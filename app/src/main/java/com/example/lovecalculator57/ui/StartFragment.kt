@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator57.Presenter
 import com.example.lovecalculator57.R
 import com.example.lovecalculator57.databinding.FragmentStartBinding
 import com.example.lovecalculator57.model.LoveModel
+import com.example.lovecalculator57.utils.BundleKeys.KEY_FOR_LOVE
 import com.example.lovecalculator57.view.LoveView
 
 class StartFragment : Fragment(), LoveView {
@@ -37,18 +40,12 @@ class StartFragment : Fragment(), LoveView {
                     firstEd.text.toString(),
                     secondEd.text.toString()
                 )
-
             }
         }
     }
 
     override fun navigationToResultScreen(loveModel: LoveModel) {
-        val fragment = ResultFragment()
-        val args = Bundle()
-        args.putSerializable("response", loveModel)
-        fragment.arguments = args
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment).addToBackStack(null).commit()
+        findNavController().navigate(R.id.resultFragment, bundleOf(KEY_FOR_LOVE to loveModel))
     }
 
     override fun showError(error: String) {
