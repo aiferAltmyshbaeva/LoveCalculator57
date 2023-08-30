@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.lovecalculator57.App
 import com.example.lovecalculator57.Presenter
 import com.example.lovecalculator57.R
 import com.example.lovecalculator57.databinding.ActivityMainBinding
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), LoveView {
     }
 
     override fun navigationToResultScreen(loveModel: LoveModel) {
+        App.appDatabase.loveDao().insert(loveModel)
         changeScreen(SecondActivity(), loveModel, "key")
     }
 

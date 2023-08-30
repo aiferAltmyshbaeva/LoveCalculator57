@@ -12,7 +12,7 @@
         android:id="@+id/img_result_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="16dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/result_fragment" />
 
     <TextView
@@ -72,8 +72,14 @@
         android:id="@+id/tryAgainBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Try Again"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/historyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
         android:textSize="24sp" />
 
 </LinearLayout>

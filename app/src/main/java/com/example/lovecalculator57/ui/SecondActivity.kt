@@ -7,6 +7,7 @@ import com.example.lovecalculator57.R
 import com.example.lovecalculator57.ResultPresenter
 import com.example.lovecalculator57.databinding.ActivitySecondBinding
 import com.example.lovecalculator57.model.LoveModel
+import com.example.lovecalculator57.utils.changeScreen
 import com.example.lovecalculator57.view.ResultView
 
 class SecondActivity : AppCompatActivity(R.layout.activity_second), ResultView {
@@ -15,7 +16,16 @@ class SecondActivity : AppCompatActivity(R.layout.activity_second), ResultView {
     private val presenter = ResultPresenter(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initClickers()
         setupUI()
+    }
+
+    private fun initClickers() {
+        with(binding) {
+            historyBtn.setOnClickListener {
+                changeScreen(HistoryActivity(), null)
+            }
+        }
     }
 
     private fun setupUI() {
