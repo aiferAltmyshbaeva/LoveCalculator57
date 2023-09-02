@@ -1,15 +1,16 @@
 package com.example.lovecalculator57
 
+import com.example.lovecalculator57.model.LoveApi
 import com.example.lovecalculator57.model.LoveModel
-import com.example.lovecalculator57.model.RetrofitService
 import com.example.lovecalculator57.view.LoveView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class Presenter(val loveView: LoveView) {
+class Presenter @Inject constructor( private val api: LoveApi) {
 
-    var api = RetrofitService.api
+    lateinit var loveView: LoveView
 
     fun getLoveResult(firstName: String, secondName: String) {
         api.calculateMatching(
@@ -25,6 +26,10 @@ class Presenter(val loveView: LoveView) {
                 loveView.showError((t.message.toString()))
             }
         })
+    }
+
+    fun attachView(view: LoveView){
+        this.loveView = view
     }
 
 }

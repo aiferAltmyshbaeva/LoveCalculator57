@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id ("kotlin-kapt")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -35,7 +36,7 @@ android {
         jvmTarget = "17"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -51,11 +52,11 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //Retrofit/Gson
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //ViewBindingPropertyDelegate/reflection based
-    implementation ("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
 
     //Room
     val room_version = "2.5.2"
@@ -64,4 +65,10 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
 
+    //Dagger/DI/Hilt
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-compiler:2.47")
+
+    //Circle Indicator 3
+    implementation ("me.relex:circleindicator:2.1.6")
 }
