@@ -8,7 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class Presenter @Inject constructor( private val api: LoveApi) {
+class Presenter @Inject constructor(private val api: LoveApi) {
 
     lateinit var loveView: LoveView
 
@@ -28,7 +28,7 @@ class Presenter @Inject constructor( private val api: LoveApi) {
         })
     }
 
-    fun attachView(view: LoveView){
+    fun attachView(view: LoveView) {
         this.loveView = view
     }
 

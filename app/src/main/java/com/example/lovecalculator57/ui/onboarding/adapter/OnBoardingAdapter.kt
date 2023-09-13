@@ -15,23 +15,23 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
         OnBoarding(
             "Have a good time",
             "You should take the time to help those who need you",
-            (R.drawable.first_img_onboarding)
+            (R.raw.animation_first)
         ),
         OnBoarding(
             "Cherishing love",
             "It is now no longer possible for you to cherish love",
-            (R.drawable.second_img_onboarding)
+            (R.raw.animation_second)
         ),
         OnBoarding(
             "Have a breakup?",
             "We have made the correction for you, don't worry." +
                     " Maybe someone is waiting for you!",
-            (R.drawable.third_img_onboarding)
+            (R.raw.animation_third)
         ),
         OnBoarding(
             null,
             "It's Fun and Many more",
-            (R.drawable.fourth_img_onboarding)
+            (R.raw.animation_fourth)
         )
     )
 
@@ -56,7 +56,7 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
     inner class OnBoardingViewHolder(private val binding: ItemOnboardingBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(onBoarding: OnBoarding) = with(binding) {
-            onBoarding.image?.let { imgOnboarding.setImageResource(it) }
+            animationView.setAnimation(onBoarding.animation)
             tvTitle.text = onBoarding.title
             tvDesc.text = onBoarding.desc
             btnStart.isVisible = adapterPosition == data.lastIndex
